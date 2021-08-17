@@ -7,7 +7,7 @@ module.exports = () => {
   //Variáveis de Aplicação
   app.set('port', process.env.PORT || config.get('server.port'));
 
-  // MIDDLEWARES
+  // MiddleWares
   app.use(express.json());
   //
 
