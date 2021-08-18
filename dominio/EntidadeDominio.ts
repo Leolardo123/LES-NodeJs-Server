@@ -1,3 +1,3 @@
 class EntidadeDominio{
-
+    id:number;
 }
