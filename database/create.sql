@@ -45,6 +45,8 @@ create table elivros.cartoes (
     car_id serial primary key ,
     car_cli_id integer references elivros.clientes,
     car_numero varchar(255) not null ,
+    car_bandeira varchar(255) not null ,
+    car_nome varchar(255) not null ,
     car_validade numeric(4,0)
 );
 
