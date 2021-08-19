@@ -10,6 +10,15 @@ class Cliente extends EntidadeDominio{
     private cartoes:Array<Cartao>;
     private cupons:Array<Cupom>
 
+    public getCupons(): Array<Cupom> {
+        return this.cupons;
+    }
+
+    public setCupons(cupons: Array<Cupom>): void {
+        this.cupons = cupons;
+    }
+
+
     public getCartoes(): Array<Cartao> {
         return this.cartoes;
     }

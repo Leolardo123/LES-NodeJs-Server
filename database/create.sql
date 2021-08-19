@@ -15,7 +15,7 @@ create table elivros.clientes (
 create table elivros.cupons (
     cup_id serial primary key ,
     cup_valor numeric(10,2) not null,
-    cup_validade date not null,
+    cup_validade date not null
 );
 
 create table elivros.livros (

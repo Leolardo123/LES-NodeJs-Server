@@ -1,5 +1,5 @@
 module.exports = {
-    get : (req,res) => {
+    get : async (req,res) => {
         res.send('recurso não implementado')
     }
 }
