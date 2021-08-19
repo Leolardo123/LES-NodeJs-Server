@@ -8,6 +8,7 @@ class Cliente extends EntidadeDominio{
     private senha:string;
     private ativo:boolean;
     private cartoes:Array<Cartao>;
+    private cupons:Array<Cupom>
 
     public getCartoes(): Array<Cartao> {
         return this.cartoes;

@@ -53,10 +53,11 @@ create table elivros.cartoes (
 create table elivros.enderecos (
     end_id serial primary key ,
     end_cli_id integer references elivros.clientes,
+    end_tipo varchar(255) not null,
     end_cep varchar(255) not null,
     end_numero varchar(255) not null,
     end_logradouro varchar(255) not null,
     end_bairro varchar(255) not null,
     end_cidade varchar(255) not null,
-    end_estado varchar(255) not null,
+    end_estado varchar(255) not null
 );
