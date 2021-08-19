@@ -1,20 +1,20 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/pedidos',async function(req,res){
-
+router.get('/',async function(req,res){
+    controller.get(req,res);
 })
-router.get('/pedidos/:id',async function(req,res){
-
+router.get('/:id',async function(req,res){
+    controller.get(req,res);
 })
-router.post('/pedidos/:id',async function(req,res){
-
+router.post('/:id',async function(req,res){
+    controller.get(req,res);
 })
-router.put('/pedidos/:id',async function(req,res){
-
+router.put('/:id',async function(req,res){
+    controller.get(req,res);
 })
-router.delete('/pedidos/:id',async function(req,res){
-
+router.delete('/:id',async function(req,res){
+    controller.get(req,res);
 })
 
 module.exports = router

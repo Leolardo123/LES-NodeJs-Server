@@ -3,6 +3,7 @@ class Endereco extends EntidadeDominio{
     private cep:string;
     private numero:number;
     private logradouro:string;
+    private complemento:string;
     private bairro:string;
     private cidade:string;
     private estado:string;
@@ -37,6 +38,14 @@ class Endereco extends EntidadeDominio{
 
     public setLogradouro(logradouro: string): void {
         this.logradouro = logradouro;
+    }
+
+    public getComplemento(): string {
+        return this.complemento;
+    }
+
+    public setComplemento(complemento: string): void {
+        this.complemento = complemento;
     }
 
     public getBairro(): string {

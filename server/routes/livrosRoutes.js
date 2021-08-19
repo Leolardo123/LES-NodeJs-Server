@@ -1,20 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const controller = require("../controller/LivrosController");
 
-router.get('/livros',async function(req,res){
-
+router.get('/',async function(req,res){
+    controller.get(req,res);
 })
-router.get('/livros/:id',async function(req,res){
-
+router.get('/:id',async function(req,res){
+    controller.get(req,res);
 })
-router.post('/livros/:id',async function(req,res){
-
+router.post('/:id',async function(req,res){
+    controller.get(req,res);
 })
-router.put('/livros/:id',async function(req,res){
-
+router.put('/:id',async function(req,res){
+    controller.get(req,res);
 })
-router.delete('/livros/:id',async function(req,res){
-
+router.delete('/:id',async function(req,res){
+    controller.get(req,res);
 })
 
 module.exports = router

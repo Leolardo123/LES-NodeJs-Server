@@ -3,8 +3,10 @@
       "port" : 8080
     },
     "pgdatabase":{
-      "name":"LES",
+      "dbname":"LES",
       "pass":"admin",
-      "user":"admin"
+      "user":"admin",
+      "host":"localhost",
+      "port":5432
     }
   }

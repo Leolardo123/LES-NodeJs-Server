@@ -47,7 +47,7 @@ create table elivros.cartoes (
     car_numero varchar(255) not null ,
     car_bandeira varchar(255) not null ,
     car_nome varchar(255) not null ,
-    car_validade numeric(4,0)
+    car_validade date not null
 );
 
 create table elivros.enderecos (
@@ -57,6 +57,7 @@ create table elivros.enderecos (
     end_cep varchar(255) not null,
     end_numero varchar(255) not null,
     end_logradouro varchar(255) not null,
+    end_complemento varchar(255),
     end_bairro varchar(255) not null,
     end_cidade varchar(255) not null,
     end_estado varchar(255) not null
