@@ -5,8 +5,8 @@
     "pgdatabase":{
       "dbname":"LES",
       "pass":"admin",
-      "user":"admin",
+      "user":"root",
       "host":"localhost",
       "port":5432
     }
-  }
+}

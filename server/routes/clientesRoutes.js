@@ -8,8 +8,8 @@ router.get('/',async function(req,res){
 router.get('/:id',async function(req,res){
     controller.get(req,res);
 })
-router.post('/:id',async function(req,res){
-    controller.get(req,res);
+router.post('/',async function(req,res){
+    controller.post(req,res);
 })
 router.put('/:id',async function(req,res){
     controller.get(req,res);

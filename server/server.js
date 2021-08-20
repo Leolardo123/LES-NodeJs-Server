@@ -1,7 +1,6 @@
 const app = require('./config/express')();
 const port = app.get('port');
 
-
 app.use('/livros',require('./routes/livrosRoutes'))
 
 app.use('/clientes',require('./routes/clientesRoutes'))

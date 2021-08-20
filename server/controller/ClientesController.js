@@ -5,9 +5,13 @@ module.exports = {
         res.send('recurso não implementado')
     },
     post: async (req,res) => {
-        res.send('recurso não implementado')
+        const passeHasheado = await bcrypt.hash("aaaaa", 10);
+        const headers = req.headers;
+        let cliente = headers
 
-        const passeHasheado = await bcrypt.hash(req.body.senhas, 10)
-        const cliente =  new Cliente(passeHasheado)
+        console.log(req)
+        console.log(cliente)
+
+        res.send(req.body.toString());
     }
 }
