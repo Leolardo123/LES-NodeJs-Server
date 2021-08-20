@@ -10,7 +10,6 @@ module.exports = {
         let cliente = headers
 
         console.log(req)
-        console.log(cliente)
 
         res.send(req.body.toString());
     }
