@@ -21,31 +21,28 @@ module.exports = {
             res.json({errMsg:'Data not found'});
         }else{
             console.log('getOne',returnData[0])
-            res.json({
-                returnData: returnData[0],
-                token: jwt.sign(returnData[0], 'PRIVATEKEY')
-            });
+            res.json(returnData[0]);
         }
     },
     post: async (req,res) => {
-        const passeHasheado = await bcrypt.hash('aaaaaa', 10);
+        const passeHasheado = await bcrypt.hash('req.body.cli_senha', 10);
 
         console.log(req)
 
         let cliente = {
-            "cli_pnome":    req.params.data.cli_pnome,
-            "cli_unome":    req.params.data.cli_unome,
-            "cli_rg":       req.params.data.cli_rg,
-            "cli_cpf":      req.params.data.cli_cpf,
-            "cli_email":    req.params.data.cli_email,
-            "cli_telefone": req.params.data.cli_telefone,
+            "cli_pnome":    req.body.cli_pnome,
+            "cli_unome":    req.body.cli_unome,
+            "cli_rg":       req.body.cli_rg,
+            "cli_cpf":      req.body.cli_cpf,
+            "cli_email":    req.body.cli_email,
+            "cli_telefone": req.body.cli_telefone,
             "cli_senha":    passeHasheado,
             "cli_ativo":    true
         }
 
         console.log(sqlBuild.objToSql(cliente))
 
-        //const returnData = await clientesData.post(cliente);
+        const returnData = await clientesData.post(cliente);
 
         if(!returnData||returnData.length==0) {
             console.log('post: Error on Insert')

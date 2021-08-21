@@ -1,13 +1,13 @@
 module.exports = {
     objToSql : (obj) => {
     
-        let sqlColumns = '';
+        let sqlColumns = "";
         
         Object.keys(obj).forEach(key => {
-            sqlColumns += key + ' = ' + obj[key] + ',';
+            sqlColumns += key + " = '" + obj[key] + "',";
         })
 
-        sqlColumns[sqlColumns.length - 1] = ''; 
+        sqlColumns[sqlColumns.length - 2] = ""; 
 
         return sqlColumns;
     }

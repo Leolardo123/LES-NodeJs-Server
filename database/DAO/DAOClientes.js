@@ -1,18 +1,17 @@
 const db = require('../conexao')
+const config = require('config')
 
 module.exports = {
+    authPostOne : (email, senha) => {
+        return db.execute.query("SELECT cli_id FROM "+db.schema+".clientes WHERE cli_email='"+email+"' and cli_senha='"+senha+"'");
+    },
     get    : () => {
-        return db.query('SELECT * FROM elivros.clientes');
+        return db.execute.query("SELECT * FROM "+db.schema+".clientes");
     },
     getOne : (id) => {
-        return db.query('SELECT * FROM elivros.clientes WHERE cli_id = '+id);
+        return db.execute.query("SELECT * FROM "+db.schema+".clientes WHERE cli_id = "+id);
     },
-    insert : (cliente) => {
-        db.query('INSERT INTO clientes VALUES ');
+    post : (queryString) => {
+        db.execute.query("INSERT INTO "+db.schema+".clientes VALUES ('"+queryString+"')");
     }
 }
-
-// exports.getClientes = function () {
-//     return db.query('SELECT * FROM elivros.clientes')
-// }
-

@@ -1,9 +1,11 @@
 const app = require('./config/express')();
 const port = app.get('port');
 
+app.use('/auth',require('./routes/authClienteRoutes'));
+
 app.use('/livros',require('./routes/livrosRoutes'));
 
-app.use('/clientes',require('./routes/clientesRoutes'));
+app.use('/clientes', require('./routes/clientesRoutes'));
 
 app.use('/cupons',require('./routes/cuponsRoutes'));
 

@@ -1,13 +1,13 @@
-const db = require('../conexao')
+const { db } = require('../conexao')
 
 module.exports = {
     get    : () => {
-        return db.query('SELECT * FROM elivros.livros');
+        return db.execute.query('SELECT * FROM elivros.livros');
     },
     getOne : (id) => {
-        return db.query('SELECT * FROM elivros.livros WHERE  liv_id = '+id);
+        return db.execute.query('SELECT * FROM elivros.livros WHERE  liv_id = '+id);
     },
-    insert : (cliente) => {
-        db.query('INSERT INTO livros VALUES ');
+    post : (cliente) => {
+        db.execute.query('INSERT INTO livros VALUES ');
     }
 }

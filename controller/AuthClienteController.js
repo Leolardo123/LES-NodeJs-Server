@@ -5,7 +5,8 @@ const sqlBuild = require('../services/sqlBuild')
 
 module.exports = {
     postOne : async (req,res) => {
-        const returnData = await clientesData.getOne(req.params.id);
+        const { email, senha } = req.body;
+        const returnData = await clientesData.authPostOne(email, senha);
         if(!returnData||returnData.length==0) {
             console.log('getOne: Data not found')
             res.json({errMsg:'Data not found'});

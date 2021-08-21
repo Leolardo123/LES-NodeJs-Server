@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const controller = require("../controller/ClientesController");
+const validate = require('../config/auth')
 
-router.get('/',async function(req,res){
+router.get('/', validate, async function(req,res){
     controller.get(req,res);
 })
 

@@ -8,8 +8,8 @@ async function validate(req, res, next) {
     return res.sendStatus(401);
   }
 
-  const [token] = authorization.split(' ');
-
+  const [, token] = authorization.split(' ');
+  
   try {
     await promisify(jwt.verify)(token, 'PRIVATEKEY');
 
