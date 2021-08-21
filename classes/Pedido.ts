@@ -1,4 +1,7 @@
-class Pedido{
+import {EntidadeDominio} from './entidadeDominio';
+import {ItemPedido} from './itemPedido';
+
+export class Pedid extends EntidadeDominio {
     private itens:Array<ItemPedido>;
     private valor:number;
     private data:Date;

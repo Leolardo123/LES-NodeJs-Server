@@ -1,4 +1,6 @@
-class Livro extends EntidadeDominio{
+import {EntidadeDominio} from './entidadeDominio';
+
+export class Livro extends EntidadeDominio{
     private nome:string;
     private descricao:string;
     private valor:number;

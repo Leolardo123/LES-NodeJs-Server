@@ -1,4 +1,6 @@
-class Endereco extends EntidadeDominio{
+import {EntidadeDominio} from './entidadeDominio';
+
+export class Endereco extends EntidadeDominio{
     private tipo:string;
     private cep:string;
     private numero:number;

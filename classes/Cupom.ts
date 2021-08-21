@@ -1,4 +1,6 @@
-class Cupom extends EntidadeDominio{
+import {EntidadeDominio} from './entidadeDominio';
+
+export class Cupom extends EntidadeDominio{
     private valor: number;
     private validade:Date;
 

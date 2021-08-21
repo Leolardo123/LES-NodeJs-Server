@@ -1,4 +1,4 @@
-class EntidadeDominio{
+export class EntidadeDominio{
     private id:number;
 
     public getId(): number {

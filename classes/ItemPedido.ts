@@ -1,4 +1,7 @@
-class ItemPedido extends EntidadeDominio{
+import {EntidadeDominio} from './entidadeDominio';
+import {Livro} from './Livro';
+
+export class ItemPedido extends EntidadeDominio{
     private livro:Livro;
     private quantidade:number;
     private valor:number;

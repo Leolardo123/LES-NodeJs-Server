@@ -1,4 +1,8 @@
-class Cliente extends EntidadeDominio{
+import {EntidadeDominio} from './entidadeDominio';
+import {Cartao} from './Cartao';
+import {Cupom} from './Cupom';
+
+export class Cliente extends EntidadeDominio{
     private primeiro_nome:string;
     private ultimo_nome:string;
     private rg:string;

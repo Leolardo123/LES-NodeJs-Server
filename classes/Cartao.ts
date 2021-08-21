@@ -1,4 +1,6 @@
-class Cartao extends EntidadeDominio{
+import {EntidadeDominio} from './entidadeDominio';
+
+export class Cartao extends EntidadeDominio{
     private numero: number;
     private bandeira:string;
     private nome:string;
