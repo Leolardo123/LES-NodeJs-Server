@@ -13,4 +13,4 @@ app.use('/pedidos',require('./routes/pedidosRoutes'));
 
 app.use('/enderecos',require('./routes/enderecosRoutes'));
 
-app.listen(8080);
+app.listen(port);

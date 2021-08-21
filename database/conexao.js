@@ -8,3 +8,5 @@ const db = pgp({
     port:       config.get("pgdatabase.port"),
     database:   config.get("pgdatabase.dbname")
 })
+
+module.exports = db;
