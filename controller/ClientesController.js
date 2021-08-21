@@ -2,7 +2,11 @@ const bcrypt = require('bcrypt')
 
 module.exports = {
     get : async (req,res) => {
-        res.send('recurso não implementado')
+        return res.json({
+            first_name: 'Leonardo',
+            email: 'teste@gmail.com',
+            senha: 'teste'
+        });
     },
     post: async (req,res) => {
         const passeHasheado = await bcrypt.hash("aaaaa", 10);

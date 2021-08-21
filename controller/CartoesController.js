@@ -1,5 +1,8 @@
 module.exports = {
     get : async (req,res) => {
-        res.send('recurso não implementado')
+        res.json([{
+            id: 1,
+            title: 'cartoes'
+        }]);
     }
 }
