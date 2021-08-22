@@ -32,7 +32,7 @@ module.exports = {
 
         console.log(livro)
 
-        const returnData = await livrosData.getOne(livro);
+        const returnData = await livrosData.post(livro);
 
         if(!returnData||returnData.length==0) {
             console.log('post: Error on Insert')

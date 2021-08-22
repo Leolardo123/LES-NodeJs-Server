@@ -11,7 +11,8 @@ module.exports = {
     getOne : (id) => {
         return db.execute.query("SELECT * FROM "+db.schema+".clientes WHERE cli_id = "+id);
     },
-    post : (queryString) => {
-        db.execute.query("INSERT INTO "+db.schema+".clientes VALUES ('"+queryString+"')");
+    post : (query) => {
+        console.log("INSERT INTO "+db.schema+".clientes("+query.cols+") VALUES ("+query.values+")")
+        return db.execute.query("INSERT INTO "+db.schema+".clientes("+query.cols+") VALUES ("+query.values+")");
     }
 }

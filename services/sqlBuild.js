@@ -2,13 +2,28 @@ module.exports = {
     objToSql : (obj) => {
     
         let sqlColumns = "";
+        let sqlValues = ""
         
         Object.keys(obj).forEach(key => {
-            sqlColumns += key + " = '" + obj[key] + "',";
+            if(key != obj.length) {
+                sqlColumns += key + ",";
+                sqlValues += "'"+obj[key]+"' ,";
+            } else {
+                sqlColumns += key;
+                sqlValues += obj[key];
+            }
+            
         })
 
-        sqlColumns[sqlColumns.length - 2] = ""; 
+        sqlColumns = sqlColumns.substring(0, sqlColumns.length - 1);
+        sqlValues = sqlValues.substring(0, sqlValues.length - 1);
 
-        return sqlColumns;
+        sqlParams = {
+            cols: sqlColumns,
+            values: sqlValues
+        }
+
+        return sqlParams;
     }
 }
+
