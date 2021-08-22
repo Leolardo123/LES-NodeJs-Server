@@ -1,57 +1,76 @@
 const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken');
-const clientesData = require('../database/DAO/DAOClientes')
-const sqlBuild = require('../services/sqlBuild')
+const dao = require('../database/DAO/DAOClientes')
 
+//A CAMADA DE CONTROLE POR ENQUANTO ENVIA DIRETO PARA AS FUNCOES DE INSERÇÃO
 module.exports = {
-    get : async (req,res) => {
-        const returnData = await clientesData.get();
+    read : async (req,res) => {
+        const returnData = await dao.read();
         if(!returnData||returnData.length==0) {
             console.log('Data not found')
-            res.json({errMsg:'get: Data not found'});
+            res.json({errMsg:'Dados não encontrados!!!'});
         }else{
-            console.log('get',returnData)
+            console.log('read',returnData)
             res.json(returnData);
         }
     },
-    getOne : async (req,res) => {
-        const returnData = await clientesData.getOne(req.params.id);
+    readId : async (req,res) => {
+        const returnData = await dao.readId(req.body);
         if(!returnData||returnData.length==0) {
-            console.log('getOne: Data not found')
-            res.json({errMsg:'Data not found'});
+            console.log('readId: Data not found')
+            res.json({errMsg:'Dados não encontrados!!!'});
         }else{
             console.log('getOne',returnData[0])
             res.json(returnData[0]);
         }
     },
-    readID : async (req,res) => {
-        const returnData = await clientesData.getOne(req.body.id);
-        if(!returnData||returnData.length==0) {
-            console.log('getOne: Data not found')
-            res.json({errMsg:'Data not found'});
+    insert: async (req,res) => {
+        req.body.cli_senha = await bcrypt.hash('req.body.cli_senha', 10);
+        req.body.cli_ativo = true;
+
+        const returnData = await dao.insert(req.body);
+
+        if(!returnData) {
+            console.log('insert: Error on Insert')
+            res.json({errMsg:'Erro ao inserir'});
         }else{
-            console.log('getOne',returnData[0])
-            res.json(returnData[0]);
+            console.log('insert: insert data success')
+            res.json({ msg: 'Cadastro efetuado com sucesso' });
         }
     },
-    post: async (req,res) => {
-        const passeHasheado = await bcrypt.hash('req.body.cli_senha', 10);
+    update: async (req,res) => {
+        req.body.cli_senha = await bcrypt.hash('req.body.cli_senha', 10);
+        req.body.cli_ativo = true;
 
-        
+        const returnData = await dao.update(req.body);
 
-        let teste = sqlBuild.objToSql(cliente)
-
-        const returnData = await clientesData.post(teste);
-
-        // if(!returnData||returnData.length==0) {
-        //     console.log('post: Error on Insert')
-        //     res.json({errMsg:'Data not found'});
-        // }else{
-        //     console.log('post',returnData)
-        //     res.json(returnData);
-        // }
+        if(!returnData) {
+            console.log('update: Error on update')
+            res.json({errMsg:'Erro ao atualizar'});
+        }else{
+            console.log('update: update data success')
+            res.json({ msg: 'Cadastro atualizado com sucesso' });
+        }
     },
-    remove: async (req,res) => {
-        
+    inactive: async (req,res) => {
+        const returnData = await dao.inactive(req.body);
+
+        if(!returnData) {
+            console.log('inactive: Error on inactive account')
+            res.json({errMsg:'Erro ao Inativar conta'});
+        }else{
+            console.log('inactive: delete data success')
+            res.json({ msg: 'Cadastro inativado com sucesso' });
+        }
+    },
+    delete: async (req,res) => {
+        const returnData = await dao.delete(req.body);
+
+        if(!returnData) {
+            console.log('delete: Error on delete')
+            res.json({errMsg:'Erro ao deletar'});
+        }else{
+            console.log('delete: delete data success')
+            res.json({ msg: 'Cadastro deletado com sucesso' });
+        }
     }
 }

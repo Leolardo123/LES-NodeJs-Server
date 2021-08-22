@@ -24,7 +24,7 @@ create table elivros.livros (
     liv_nome varchar(255) not null,
     liv_descricao varchar(255) not null,
     liv_estoque numeric(10,2) not null,
-    liv_ativo boolean
+    liv_ativo boolean default true
 );
 
 create table elivros.pedidos (
@@ -52,6 +52,7 @@ create table elivros.cartoes (
 
 create table elivros.enderecos (
     end_id serial primary key ,
+    end_nome varchar(255) not null ,
     end_cli_id integer references elivros.clientes,
     end_tipo varchar(255) not null,
     end_cep varchar(255) not null,

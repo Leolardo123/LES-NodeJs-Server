@@ -1,21 +1,38 @@
 const express = require('express');
 const router = express.Router();
+
+const validate = require('../config/auth');
 const controller = require('../controller/CartoesController')
 
-router.get('/',async function(req,res){
-    controller.get(req,res);
+//AS ROTAS LEVAM PARA O CONTROLLER QUE REALIZA AS REQUISIÇÕES DA API
+router.post('/readAll', validate, async function(req,res){
+    controller.readAll(req,res);
 })
-router.get('/:id',async function(req,res){
-    controller.get(req,res);
+
+router.post('/read', validate, async function(req,res){
+    controller.read(req,res);
 })
-router.post('/:id',async function(req,res){
-    controller.get(req,res);
+
+router.post('/readId', validate, async function(req,res){
+    controller.readId(req,res);
 })
-router.put('/:id',async function(req,res){
-    controller.get(req,res);
+
+router.post('/insert', validate, async function(req,res){
+    controller.insert(req,res);
 })
-router.delete('/:id',async function(req,res){
-    controller.get(req,res);
+
+
+router.put('/update',async function(req,res){
+    controller.update(req,res);
 })
+
+router.put('/inactive',async function(req,res){
+    controller.inactive(req,res);
+})
+
+router.delete('/delete',async function(req,res){
+    controller.delete(req,res);
+})
+
 
 module.exports = router

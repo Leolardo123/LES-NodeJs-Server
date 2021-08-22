@@ -1,10 +1,9 @@
 const app = require('./config/express')();
 const port = app.get('port');
 
-app.use('/',()=>{
-    res.send("API está em funcionamento...")
-});
+//AQUI SÃO SEPARADO AS ROTAS PRINCIPAIS
 
+//A ROTA AUTH CUIDA DA AUTHENTICAÇÃO DO CLIENTE
 app.use('/auth',require('./routes/authClienteRoutes'));
 
 app.use('/livros',require('./routes/livrosRoutes'));
