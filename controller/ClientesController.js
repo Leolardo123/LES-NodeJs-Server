@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const dao = require('../database/DAO/DAOClientes')
+let teste = '$2b$10$HYRKOiQDZVrdYW3fX514oO';
 
 //A CAMADA DE CONTROLE POR ENQUANTO ENVIA DIRETO PARA AS FUNCOES DE INSERÇÃO
 module.exports = {
@@ -24,9 +25,9 @@ module.exports = {
         }
     },
     insert: async (req,res) => {
-        req.body.cli_senha = await bcrypt.hash('req.body.cli_senha', 10);
         req.body.cli_ativo = true;
-
+        var salt = bcrypt.genSaltSync(10);
+        req.body.cli_senha = await bcrypt.hash(req.body.cli_senha, salt);
         const returnData = await dao.insert(req.body);
 
         if(!returnData) {
@@ -38,7 +39,8 @@ module.exports = {
         }
     },
     update: async (req,res) => {
-        req.body.cli_senha = await bcrypt.hash('req.body.cli_senha', 10);
+        var salt = bcrypt.genSaltSync(10);
+        req.body.cli_senha = await bcrypt.hash(req.body.cli_senha, salt);
         req.body.cli_ativo = true;
 
         const returnData = await dao.update(req.body);

@@ -5,7 +5,7 @@ const validate = require('../config/auth');
 const controller = require('../controller/CartoesController')
 
 //AS ROTAS LEVAM PARA O CONTROLLER QUE REALIZA AS REQUISIÇÕES DA API
-router.post('/readAll', validate, async function(req,res){
+router.post('/readAll', async function(req,res){
     controller.readAll(req,res);
 })
 

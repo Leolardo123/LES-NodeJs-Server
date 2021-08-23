@@ -3,8 +3,8 @@ const config = require('config')
 
 //AQUI CONTEM TODAS AS FUNCÕES QUE FAZEM CONEXOES COM O BD
 module.exports = {
-    auth : (email, senha) => {
-        return db.execute.query("SELECT cli_id, cli_pnome FROM "+db.schema+".clientes WHERE cli_email='"+email+"' and cli_senha='"+senha+"'");
+    auth : (email) => {
+        return db.execute.query("SELECT cli_id, cli_pnome, cli_senha FROM "+db.schema+".clientes WHERE cli_email= $1", [email]);
     },
     read : () => {
         return db.execute.query("SELECT * FROM "+db.schema+".clientes");
