@@ -22,6 +22,9 @@ module.exports = {
             + "WHERE cli_id = $8"
             , [query.cli_pnome, query.cli_unome, query.cli_rg, query.cli_cpf, query.cli_email, query.cli_telefone, query.cli_senha, query.id]);
     },
+    updatePassword : (query) => {
+        return db.execute.query("UPDATE "+db.schema+".clientes SET cli_senha = $1 WHERE cli_id = $2", [query.cli_senha, query.id]);
+    },
     inactive : (query) => {
         return db.execute.query("UPDATE "+db.schema+".clientes SET cli_ativo = false "
             + "WHERE cli_id = $1"

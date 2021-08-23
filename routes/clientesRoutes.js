@@ -22,6 +22,10 @@ router.put('/update',validate, async function(req,res){
     controller.update(req,res);
 })
 
+router.put('/updatePassword',validate, async function(req,res){
+    controller.updatePassword(req,res);
+})
+
 router.put('/inactive',validate, async function(req,res){
     controller.inactive(req,res);
 })

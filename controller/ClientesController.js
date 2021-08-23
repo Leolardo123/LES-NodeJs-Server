@@ -53,6 +53,21 @@ module.exports = {
             res.json({ msg: 'Cadastro atualizado com sucesso' });
         }
     },
+    updatePassword: async (req,res) => {
+        var salt = bcrypt.genSaltSync(10);
+        req.body.cli_senha = await bcrypt.hash(req.body.cli_senha, salt);
+        req.body.cli_ativo = true;
+
+        const returnData = await dao.updatePassword(req.body);
+
+        if(!returnData) {
+            console.log('updatePassword: Error on update')
+            res.json({errMsg:'Erro ao atualizar'});
+        }else{
+            console.log('updatePassword: update data success')
+            res.json({ msg: 'Cadastro atualizado com sucesso' });
+        }
+    },
     inactive: async (req,res) => {
         const returnData = await dao.inactive(req.body);
 
