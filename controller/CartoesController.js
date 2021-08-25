@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 
-const dao = require('../database/DAO/DAOCartoes')
+const dao = require('../database/DAO/DAOCartao')
 
 //A CAMADA DE CONTROLE POR ENQUANTO ENVIA DIRETO PARA AS FUNCOES DE INSERÇÃO
 module.exports = {

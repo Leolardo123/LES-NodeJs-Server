@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
-const dao = require('../database/DAO/DAOClientes')
-let teste = '$2b$10$HYRKOiQDZVrdYW3fX514oO';
+
+const dao = require('../database/DAO/DAOCliente')
 
 //A CAMADA DE CONTROLE POR ENQUANTO ENVIA DIRETO PARA AS FUNCOES DE INSERÇÃO
 module.exports = {

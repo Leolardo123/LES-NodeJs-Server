@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const dao = require('../database/DAO/DAOClientes')
+const dao = require('../database/DAO/DAOCliente')
 const jwt = require('jsonwebtoken');
 
 module.exports = {
