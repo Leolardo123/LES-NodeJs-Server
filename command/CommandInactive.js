@@ -1,14 +1,12 @@
 const Fachada = require("../fachada/fachada");
 
 class CommandInactive {
-    fachada;
-
-    constructor() {
-        this.fachada = new Fachada();
+constructor() {
+        this._fachada = new Fachada();
     }
 
     execute(data) {
-        return this.fachada.inactive(data);
+        return this._fachada.inactive(data);
     }
 }
 

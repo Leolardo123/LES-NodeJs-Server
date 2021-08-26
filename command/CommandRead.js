@@ -1,14 +1,12 @@
 const Fachada = require("../fachada/fachada");
 
 class CommandRead {
-    fachada;
-
-    constructor() {
-        this.fachada = new Fachada();
+constructor() {
+        this._fachada = new Fachada();
     }
 
     execute(data) {
-        return this.fachada.read(data);
+        return this._fachada.read(data);
     }
 }
 

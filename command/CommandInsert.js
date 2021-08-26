@@ -1,14 +1,12 @@
 const Fachada = require("../fachada/fachada");
 
 class CommandInsert {
-    fachada;
-
-    constructor() {
-        this.fachada = new Fachada();
+constructor() {
+        this._fachada = new Fachada();
     }
 
     execute(data) {
-        return this.fachada.insert(data);
+        return this._fachada.insert(data);
     }
 }
 

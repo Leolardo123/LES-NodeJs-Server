@@ -26,12 +26,6 @@ module.exports = {
         res.json(result);
     },
     insert: async (req,res) => {
-        if(req.body.type === "cliente") {
-            let salt = bcrypt.genSaltSync(10);
-            req.body.cli_senha = await bcrypt.hash(req.body.cli_senha, salt);
-            req.body.cli_ativo = true;
-        }
-
         let command = new CommandInsert();
         let result = await command.execute(req.body)
         res.json(result);

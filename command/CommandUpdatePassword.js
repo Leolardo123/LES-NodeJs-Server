@@ -1,14 +1,12 @@
 const Fachada = require("../fachada/fachada");
 
 class CommandUpdatePassword {
-    fachada;
-
-    constructor() {
-        this.fachada = new Fachada();
+constructor() {
+        this._fachada = new Fachada();
     }
 
     execute(data) {
-        return this.fachada.updatePassword(data);
+        return this._fachada.updatePassword(data);
     }
 }
 

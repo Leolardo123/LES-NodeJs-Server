@@ -1,14 +1,12 @@
 const Fachada = require("../fachada/fachada");
 
 class CommandDelete {
-    fachada;
-
-    constructor() {
-        this.fachada = new Fachada();
+constructor() {
+        this._fachada = new Fachada();
     }
 
     execute(data) {
-        return this.fachada.delete(data);
+        return this._fachada.delete(data);
     }
 }
 
