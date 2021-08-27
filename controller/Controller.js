@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const CommandInactive = require('../command/CommandInactive');
 const CommandDelete = require('../command/CommandDelete');
 
@@ -9,55 +8,56 @@ const CommandUpdate = require("../command/CommandUpdate");
 const CommandUpdatePassword = require("../command/CommandUpdatePassword");
 const CommandReadAll = require('../command/CommandReadAll');
 
-module.exports = {
-    readAll: async (req, res) => {
+class Controller {
+    constructor() {}
+
+    async readAll(req, res) {
         let command = new CommandReadAll();
         let result = await command.execute(req.body)
         res.json(result); 
-    },
-    read: async (req, res) => {
+    }
+
+    async read(req, res) {
         let command = new CommandRead();
         let result = await command.execute(req.body)
         res.json(result); 
-    },
-    readId : async (req,res) => {
+    }
+
+    async readId(req,res) {
         let command = new CommandReadId();
         let result = await command.execute(req.body)
         res.json(result);
-    },
-    insert: async (req,res) => {
+    }
+
+    async insert(req,res) {
         let command = new CommandInsert();
         let result = await command.execute(req.body)
         res.json(result);
-    },
-    update: async (req,res) => {
-        if(req.body.type === "cliente") {
-            let salt = bcrypt.genSaltSync(10);
-            req.body.cli_senha = await bcrypt.hash(req.body.cli_senha, salt);
-        }
+    }
 
+    async update(req,res) {
         let command = new CommandUpdate();
         let result = await command.execute(req.body)
         res.json(result);
-    },
-    updatePassword: async (req,res) => {
-        if(req.body.type === "cliente") {
-            let salt = bcrypt.genSaltSync(10);
-            req.body.cli_senha = await bcrypt.hash(req.body.cli_senha, salt);
-        }
+    }
 
+    async updatePassword(req,res) {
         let command = new CommandUpdatePassword();
         let result = await command.execute(req.body)
         res.json(result);
-    },
-    inactive: async (req,res) => {
+    }
+
+    async inactive(req,res) {
         let command = new CommandInactive();
         let result = await command.execute(req.body)
         res.json(result);
-    },
-    delete: async (req,res) => {
+    }
+
+    async delete(req,res) {
         let command = new CommandDelete();
         let result = await command.execute(req.body)
         res.json(result);
     }
 }
+
+module.exports = Controller;

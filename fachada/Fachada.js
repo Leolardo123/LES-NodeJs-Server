@@ -2,7 +2,7 @@ const DAOCartao = require("../database/DAO/DAOCartao");
 const DAOCliente = require("../database/DAO/DAOCliente");
 const DAOEndereco = require("../database/DAO/DAOEndereco");
 
-const verificaSenha = require('../strategy/cliente/verificaSenha')
+const VerificaCliente = require("../strategy/VerificaCliente");
 
 class Fachada {
     constructor() {
@@ -19,7 +19,7 @@ class Fachada {
 
     definirRegras() {
         this._regras = new Map();
-        this._regras.set('cliente', new verificaSenha())
+        this._regras.set('cliente', new VerificaCliente())
     }
 
     async executarRegras(data) {

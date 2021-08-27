@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const controller = require('../controller/TesteController');
+const Controller = require('../controller/Controller');
+let controller = new Controller();
 
 router.post('/read',async function(req,res){
     controller.read(req,res);

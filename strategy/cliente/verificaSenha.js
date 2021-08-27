@@ -4,8 +4,10 @@ class verificaSenha {
     constructor() {}
 
     async processar(data) {
+        let regex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/)
+
         if(data.cli_senha) {
-            if(data.cli_senha.length >= 8) {
+            if(regex.test(data.cli_senha)) {
                 let salt = bcrypt.genSaltSync(10);
                 data.cli_senha = await bcrypt.hash(data.cli_senha, salt);
                 data.cli_ativo = true;
