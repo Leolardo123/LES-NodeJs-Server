@@ -23,10 +23,6 @@ router.put('/update',async function(req,res){
     controller.update(req,res);
 })
 
-router.put('/inactive',async function(req,res){
-    controller.inactive(req,res);
-})
-
 router.delete('/delete',async function(req,res){
     controller.delete(req,res);
 })

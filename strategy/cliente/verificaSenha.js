@@ -10,7 +10,6 @@ class verificaSenha {
             if(regex.test(data.cli_senha)) {
                 let salt = bcrypt.genSaltSync(10);
                 data.cli_senha = await bcrypt.hash(data.cli_senha, salt);
-                data.cli_ativo = true;
                 return null;
             }
             return 'Senha fraca';

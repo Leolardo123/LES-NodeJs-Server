@@ -27,7 +27,7 @@ class DAOCliente {
                 query.cli_email, 
                 query.cli_telefone, 
                 query.cli_senha, 
-                query.cli_ativo,
+                true,
                 query.cli_sexo,
                 query.cli_dtnascimento,
                 query.cli_ddd

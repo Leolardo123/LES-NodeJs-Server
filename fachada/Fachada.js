@@ -4,6 +4,7 @@ const DAOEndereco = require("../database/DAO/DAOEndereco");
 
 const VerificaCartao = require("../strategy/VerificaCartao");
 const VerificaCliente = require("../strategy/VerificaCliente");
+const VerificaEndereco = require("../strategy/VerificaEndereco");
 
 class Fachada {
     constructor() {
@@ -22,6 +23,7 @@ class Fachada {
         this._regras = new Map();
         this._regras.set('cliente', new VerificaCliente())
         this._regras.set('cartao', new VerificaCartao())
+        this._regras.set('endereco', new VerificaEndereco())
     }
 
     async executarRegras(data) {

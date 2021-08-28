@@ -5,7 +5,7 @@ create table elivros.clientes (
     cli_pnome varchar(255) not null,
     cli_unome varchar(255) not null,
     cli_sexo varchar(255) not null,
-    cli_dtnascimento varchar(255) not null,
+    cli_dtnascimento date not null,
     cli_rg varchar(10) not null unique,
     cli_cpf varchar(12) not null unique,
     cli_email varchar(255) not null unique,
@@ -53,13 +53,13 @@ create table elivros.livros (
 );
 
 create table elivros.inativar_livro (
-    ili_liv_id serial primary key integer references elivros.livros,
+    ili_liv_id primary key references elivros.livros,
     ili_motivo text not null,
     ili_categoria varchar(255) not null
 );
 
 create table elivros.ativar_livro (
-    ali_liv_id serial primary key integer references elivros.livros,
+    ali_liv_id primary key references elivros.livros,
     ali_motivo text not null,
     ali_categoria varchar(255) not null
 );
@@ -97,8 +97,7 @@ create table elivros.enderecos (
     end_tlogradouro varchar(255) not null,
     end_nome varchar(255) not null ,
     end_cli_id integer references elivros.clientes,
-    end_cobranca boolean not null,
-    end_entrega boolean not null,
+    end_cobranca_entrega varchar(255) not null,
     end_cep varchar(255) not null,
     end_numero varchar(255) not null,
     end_logradouro varchar(255) not null,
