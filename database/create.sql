@@ -97,7 +97,7 @@ create table elivros.enderecos (
     end_tlogradouro varchar(255) not null,
     end_nome varchar(255) not null ,
     end_cli_id integer references elivros.clientes,
-    end_cobranca_entrega varchar(255) not null,
+    end_tipo varchar(255) not null,
     end_cep varchar(255) not null,
     end_numero varchar(255) not null,
     end_logradouro varchar(255) not null,

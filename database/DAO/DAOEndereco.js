@@ -34,13 +34,13 @@ class DAOEndereco {
 
     update(query) {
         return db.execute.query("UPDATE "+db.schema+".enderecos SET end_tresidencia = $1, end_tlogradouro = $2, "
-            + "end_nome = $3, end_cobranca_entrega = $4, end_cep = $5, end_numero = $6, end_logradouro = $7, end_complemento = $8, end_bairro = $9, "
+            + "end_nome = $3, end_tipo = $4, end_cep = $5, end_numero = $6, end_logradouro = $7, end_complemento = $8, end_bairro = $9, "
             + "end_cidade = $10, end_estado = $11, end_pais = $12, end_observacao = $13 "
             + "WHERE end_id = $14", [
                 query.end_tresidencia,
                 query.end_tlogradouro, 
                 query.end_nome, 
-                query.end_cobranca_entrega, 
+                query.end_tipo, 
                 query.end_cep, 
                 query.end_numero, 
                 query.end_logradouro, 

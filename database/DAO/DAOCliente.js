@@ -1,4 +1,5 @@
-const db = require('../conexao')
+const db = require('../conexao');
+const DAOEndereco = require('./DAOEndereco');
 
 class DAOCliente {
     constructor(){}
@@ -32,6 +33,7 @@ class DAOCliente {
                 query.cli_dtnascimento,
                 query.cli_ddd
             ]);
+
     }
 
     update(query) {
@@ -53,6 +55,7 @@ class DAOCliente {
                 query.cli_ddd,
                 query.id
             ]);
+
     }
 
     updatePassword(query) {
