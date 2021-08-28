@@ -23,7 +23,7 @@ create table elivros.cupons_troca (
 
 create table elivros.cupons_promocional (
     cpp_id serial primary key ,
-    cpp_valor numeric(1,2) not null,
+    cpp_valor numeric(2,2) not null,
     cpp_validade date not null
 );
 
@@ -79,7 +79,7 @@ create table elivros.itenspedidos (
 );
 
 create table elivros.cartao_bandeira (
-    ban_nome varchar(255) not null,
+    ban_nome varchar(255) not null
 );
 
 create table elivros.cartoes (
@@ -107,5 +107,5 @@ create table elivros.enderecos (
     end_cidade varchar(255) not null,
     end_estado varchar(255) not null,
     end_pais varchar(255) not null,
-    end_observacao text,
+    end_observacao text
 );
