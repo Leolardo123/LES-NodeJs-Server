@@ -17,13 +17,9 @@ class VerificaEndereco {
             string += regra2.processar(data);
         }
 
-        console.log(string)
-
         if (string != '')
             return string;
         return null;
-
-        
 
     }
 }

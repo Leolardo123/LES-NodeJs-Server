@@ -37,13 +37,9 @@ class VerificaCliente {
             string += regra6.processar(data);
         }
 
-        console.log(string)
-
         if (string != '')
             return string;
         return null;
-
-        
 
     }
 }

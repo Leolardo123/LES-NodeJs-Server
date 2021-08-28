@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const validate = require('../config/auth')
-const controller = require("../controller/EnderecosController");
+const Controller = require('../controller/Controller');
+let controller = new Controller();
 
 //AS ROTAS LEVAM PARA O CONTROLLER QUE REALIZA AS REQUISIÇÕES DA API
 router.post('/read', validate, async function(req,res){

@@ -2,6 +2,7 @@ const DAOCartao = require("../database/DAO/DAOCartao");
 const DAOCliente = require("../database/DAO/DAOCliente");
 const DAOEndereco = require("../database/DAO/DAOEndereco");
 
+const VerificaCartao = require("../strategy/VerificaCartao");
 const VerificaCliente = require("../strategy/VerificaCliente");
 
 class Fachada {
@@ -20,6 +21,7 @@ class Fachada {
     definirRegras() {
         this._regras = new Map();
         this._regras.set('cliente', new VerificaCliente())
+        this._regras.set('cartao', new VerificaCartao())
     }
 
     async executarRegras(data) {
@@ -27,11 +29,22 @@ class Fachada {
         return regrasPorTipo.processar(data);
     }
 
+    async auth(data) {
+        let errMsg = await this.executarRegras(data)
+        if(errMsg == null){
+            let dao = this._daos.get(data.type)
+            let result = await dao.auth(data);
+            return result;
+        } else {
+            return { errMsg: errMsg}
+        }
+    }
+
     async read(data) {
         let errMsg = await this.executarRegras(data)
         if(errMsg == null){
             let dao = this._daos.get(data.type)
-            let result = await dao.read();
+            let result = await dao.read(data);
             return result;
         } else {
             return { errMsg: errMsg}

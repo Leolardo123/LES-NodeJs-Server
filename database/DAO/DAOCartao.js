@@ -12,7 +12,7 @@ class DAOCartao {
     }
 
     readId (query) {
-        return db.execute.query("SELECT * FROM "+db.schema+".cartoes WHERE car_cli_id = $1 and car_id = $2"[query.id, query.car_id]);
+        return db.execute.query("SELECT * FROM "+db.schema+".cartoes WHERE car_cli_id = $1 and car_id = $2",[query.id, query.car_id]);
     }
 
     insert (query) {
