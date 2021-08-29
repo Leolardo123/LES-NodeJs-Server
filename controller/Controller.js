@@ -55,8 +55,14 @@ class Controller {
 
     async insert(req,res) {
         let command = new CommandInsert();
-        let result = await command.execute(req.body)
-        res.json(result);
+        let result;
+        try {
+            result = await command.execute(req.body)
+        }catch(err){
+            console.log(err.detail);
+        }finally{
+            res.json(result);
+        }
     }
 
     async update(req,res) {
