@@ -14,10 +14,13 @@ router.post('/readId', validate, async function(req,res){
     controller.readId(req,res);
 })
 
+router.post('/readOne', validate, async function(req,res){
+    controller.readId(req,res);
+})
+
 router.post('/insert', validate, async function(req,res){
     controller.insert(req,res);
 })
-
 
 router.put('/update',async function(req,res){
     controller.update(req,res);

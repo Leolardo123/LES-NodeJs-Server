@@ -59,7 +59,8 @@ class Controller {
         try {
             result = await command.execute(req.body)
         }catch(err){
-            console.log(err.detail);
+            result.msgErr = err.detail
+            res.json(result);
         }finally{
             res.json(result);
         }

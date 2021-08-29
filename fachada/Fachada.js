@@ -75,6 +75,17 @@ class Fachada {
         }
     }
 
+    async readOne(data) {
+        let errMsg = await this.executarRegras(data)
+        if(errMsg == null){
+            let dao = this._daos.get(data.type)
+            let result = await dao.readOne(data);
+            return result;
+        } else {
+            return { errMsg: errMsg}
+        }
+    }
+
     async insert(data) {
         let errMsg = await this.executarRegras(data)
         if(errMsg == null){
