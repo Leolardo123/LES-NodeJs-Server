@@ -35,6 +35,7 @@ class Controller {
     }
 
     async readAll(req, res) {
+        console.log(req)
         let command = new CommandReadAll();
         let result = await command.execute(req.body)
         res.json(result); 
