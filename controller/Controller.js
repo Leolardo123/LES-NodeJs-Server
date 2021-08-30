@@ -7,6 +7,7 @@ const CommandDelete = require('../command/CommandDelete');
 const CommandInsert = require("../command/CommandInsert");
 const CommandRead = require("../command/CommandRead");
 const CommandReadId = require("../command/CommandReadId");
+const CommandReadOne = require("../command/CommandReadOne");
 const CommandUpdate = require("../command/CommandUpdate");
 const CommandUpdatePassword = require("../command/CommandUpdatePassword");
 const CommandReadAll = require('../command/CommandReadAll');
@@ -49,6 +50,12 @@ class Controller {
 
     async readId(req,res) {
         let command = new CommandReadId();
+        let result = await command.execute(req.body)
+        res.json(result);
+    }
+
+    async readOne(req,res) {
+        let command = new CommandReadOne();
         let result = await command.execute(req.body)
         res.json(result);
     }

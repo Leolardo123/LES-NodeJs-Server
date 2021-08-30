@@ -14,19 +14,28 @@ class DAOCliente {
     }
 
     async readId(query) {
-        return await db.execute.query("SELECT * FROM " + db.schema + ".clientes WHERE cli_id = " + query.id);
-    }
-
-    async readOne(query) {
+        let resultSet = await db.execute.query("SELECT * FROM " + db.schema + ".clientes WHERE cli_id = " + query.id);
         let DAOend = new DAOEndereco();
-        let resultSet = await db.execute.query("SELECT * FROM " + db.schema + ".clientes WHERE "+query.key+" = " + query.value);
 
-        resultSet[0].cli_senha = "";
+        let subquery = {};
+            subquery.id = resultSet[0].cli_id;
 
-        let enderecosSet = DAOend.readOne(resultSet[0].cli_id);
+        let enderecosSet = await DAOend.readId(subquery);
         resultSet[0].enderecos = enderecosSet
 
         console.log(resultSet)
+
+        return resultSet;
+    }
+
+    async readOne(query) {
+        console.log(query)
+        let DAOend = new DAOEndereco();
+        let resultSet = await db.execute.query("SELECT * FROM " + db.schema + ".clientes WHERE "+query.key+" = " + query.value);
+
+        let enderecosSet = await DAOend.readId(resultSet[0].cli_id);
+        resultSet[0].enderecos = enderecosSet
+
         return resultSet;
     }
 

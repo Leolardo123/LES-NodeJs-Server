@@ -15,7 +15,7 @@ router.post('/readId', validate, async function(req,res){
 })
 
 router.post('/readOne', validate, async function(req,res){
-    controller.readId(req,res);
+    controller.readOne(req,res);
 })
 
 router.post('/insert', async function(req,res){
