@@ -21,6 +21,8 @@ class DAOCliente {
         let DAOend = new DAOEndereco();
         let resultSet = await db.execute.query("SELECT * FROM " + db.schema + ".clientes WHERE "+query.key+" = " + query.value);
 
+        resultSet[0].cli_senha = "";
+
         let enderecosSet = DAOend.readOne(resultSet[0].cli_id);
         resultSet[0].enderecos = enderecosSet
 
