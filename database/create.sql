@@ -46,20 +46,20 @@ create table elivros.livros (
     liv_descricao varchar(255) not null,
     liv_estoque numeric(10,2) not null,
     liv_custo numeric(10,2) not null,
-    liv_mlucro numeric(1,2) not null,
+    liv_mlucro numeric(2,2) not null,
     liv_preco numeric(10,2) not null,
     liv_cbarras varchar(13) not null,
     liv_ativo boolean default true
 );
 
 create table elivros.inativar_livro (
-    ili_liv_id primary key references elivros.livros,
+    ili_liv_id integer references elivros.livros,
     ili_motivo text not null,
     ili_categoria varchar(255) not null
 );
 
 create table elivros.ativar_livro (
-    ali_liv_id primary key references elivros.livros,
+    ali_liv_id integer references elivros.livros,
     ali_motivo text not null,
     ali_categoria varchar(255) not null
 );
