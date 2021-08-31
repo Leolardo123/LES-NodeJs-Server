@@ -58,17 +58,18 @@ class DAOCliente {
                 query.cli_ddd
             ]);
 
-        try{
-            query.enderecos.forEach(endereco => {
-                endereco.cli_id = resultSet[0].cli_id;
-                DAOend.insert(endereco);
-            });
-        }catch(err){
-            console.log(err);
-            return err;
+        if(query.endereco) {
+            try{
+                query.enderecos.forEach(endereco => {
+                    endereco.cli_id = resultSet[0].cli_id;
+                    DAOend.insert(endereco);
+                });
+            }catch(err){
+                return err;
+            }
         }
 
-        return resultSet
+        return [];
     }
 
     async update(query) {

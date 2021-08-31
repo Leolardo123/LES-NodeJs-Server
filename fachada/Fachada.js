@@ -35,8 +35,12 @@ class Fachada {
         let errMsg = await this.executarRegras(data)
         if(errMsg == null){
             let dao = this._daos.get(data.type)
-            let result = await dao.auth(data);
-            return result;
+            try {
+                let result = await dao.auth(data);
+                return result;
+            }catch(e) {
+                return e.message();
+            }
         } else {
             return { errMsg: errMsg}
         }
@@ -46,8 +50,12 @@ class Fachada {
         let errMsg = await this.executarRegras(data)
         if(errMsg == null){
             let dao = this._daos.get(data.type)
-            let result = await dao.read(data);
-            return result;
+            try {
+                let result = await dao.read(data);
+                return result;
+            }catch(e) {
+                e.message();
+            }
         } else {
             return { errMsg: errMsg}
         }
@@ -89,9 +97,13 @@ class Fachada {
     async insert(data) {
         let errMsg = await this.executarRegras(data)
         if(errMsg == null){
-            let dao = this._daos.get(data.type)
-            let result = await dao.insert(data);
-            return result;
+            try {
+                let dao = this._daos.get(data.type)
+                await dao.insert(data);
+                return {sucMsg: 'Cadastrado com sucesso'};
+            } catch(e) {
+                return { errMsg: e.detail};
+            }
         } else {
             return { errMsg: errMsg};
         }
@@ -100,9 +112,13 @@ class Fachada {
     async update(data) {
         let errMsg = await this.executarRegras(data)
         if(errMsg == null){
-            let dao = this._daos.get(data.type)
-            let result = await dao.update(data);
-            return result;
+            try {
+                let dao = this._daos.get(data.type)
+                let result = await dao.update(data);
+                return {sucMsg: 'Atualizado com sucesso'};
+            } catch(e) {
+                return { errMsg: e.detail};
+            }
         } else {
             return { errMsg: errMsg}
         }
@@ -111,9 +127,13 @@ class Fachada {
     async updatePassword(data) {
         let errMsg = await this.executarRegras(data)
         if(errMsg == null){
-            let dao = this._daos.get(data.type)
-            let result = await dao.updatePassword(data);
-            return result;
+            try {
+                let dao = this._daos.get(data.type)
+                let result = await dao.updatePassword(data);
+                return {sucMsg: 'Atualizado com sucesso'};
+            } catch(e) {
+                return { errMsg: e.detail};
+            }
         } else {
             return { errMsg: errMsg}
         }
@@ -124,7 +144,7 @@ class Fachada {
         if(errMsg == null){
             let dao = this._daos.get(data.type)
             let result = await dao.inactive(data);
-            return result;
+            return {sucMsg: 'Inativado com sucesso'};
         } else {
             return { errMsg: errMsg}
         }
@@ -133,9 +153,13 @@ class Fachada {
     async delete(data) {
         let errMsg = await this.executarRegras(data)
         if(errMsg == null){
-            let dao = this._daos.get(data.type)
-            let result = await dao.delete(data);
-            return result;
+            try {
+                let dao = this._daos.get(data.type)
+                let result = await dao.delete(data);
+                return {sucMsg: 'Deletado com sucesso'};
+            } catch(e) {
+                return { errMsg: e.detail};
+            }
         } else {
             return { errMsg: errMsg}
         }

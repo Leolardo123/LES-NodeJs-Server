@@ -36,7 +36,6 @@ class Controller {
     }
 
     async readAll(req, res) {
-        console.log(req)
         let command = new CommandReadAll();
         let result = await command.execute(req.body)
         res.json(result); 
@@ -62,15 +61,9 @@ class Controller {
 
     async insert(req,res) {
         let command = new CommandInsert();
-        let result;
-        try {
-            result = await command.execute(req.body)
-        }catch(err){
-            result.msgErr = err.detail
-            res.json(result);
-        }finally{
-            res.json(result);
-        }
+        let result = await command.execute(req.body)
+        res.json(result)
+
     }
 
     async update(req,res) {

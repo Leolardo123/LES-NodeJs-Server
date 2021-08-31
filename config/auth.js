@@ -13,7 +13,7 @@ async function validate(req, res, next) {
   try {
     const data = await promisify(jwt.verify)(token, 'PRIVATEKEY');
 
-    const { cli_id } = data
+    const { cli_id } = data;
 
     req.body.id = cli_id;
 
