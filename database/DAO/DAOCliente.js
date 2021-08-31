@@ -1,5 +1,6 @@
 const { collapseTextChangeRangesAcrossMultipleVersions } = require('typescript');
 const db = require('../conexao');
+const moment = require('moment')
 const DAOEndereco = require('./DAOEndereco');
 
 class DAOCliente {
@@ -23,6 +24,8 @@ class DAOCliente {
         let enderecosSet = await DAOend.readId(subquery);
         resultSet[0].enderecos = enderecosSet
 
+        resultSet[0].cli_dtnascimento = moment(resultSet[0].cli_dtnascimento).format('YYYY-MM-DD');
+
         console.log(resultSet)
 
         return resultSet;
@@ -35,6 +38,8 @@ class DAOCliente {
 
         let enderecosSet = await DAOend.readId(resultSet[0].cli_id);
         resultSet[0].enderecos = enderecosSet
+
+        resultSet[0].cli_dtnascimento = moment(resultSet[0].cli_dtnascimento).format('YYYY-MM-DD');
 
         return resultSet;
     }

@@ -63,7 +63,6 @@ class Controller {
         let command = new CommandInsert();
         let result = await command.execute(req.body)
         res.json(result)
-
     }
 
     async update(req,res) {
