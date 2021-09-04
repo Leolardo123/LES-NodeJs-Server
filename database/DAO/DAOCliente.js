@@ -32,7 +32,6 @@ class DAOCliente {
     }
 
     async readOne(query) {
-        console.log(query)
         let DAOend = new DAOEndereco();
         let resultSet = await db.execute.query("SELECT * FROM " + db.schema + ".clientes WHERE "+query.key+" = " + query.value);
 
