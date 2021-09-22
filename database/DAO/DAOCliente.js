@@ -26,8 +26,6 @@ class DAOCliente {
 
         resultSet[0].cli_dtnascimento = moment(resultSet[0].cli_dtnascimento).format('YYYY-MM-DD');
 
-        console.log(resultSet)
-
         return resultSet;
     }
 
@@ -62,9 +60,11 @@ class DAOCliente {
                 query.cli_ddd
             ]);
 
-        if(query.endereco) {
+        console.log("Query:",query)
+
+        if(query.enderecos) {
             try{
-                query.enderecos.forEach(endereco => {
+                await query.enderecos.forEach(endereco => {
                     endereco.cli_id = resultSet[0].cli_id;
                     DAOend.insert(endereco);
                 });
