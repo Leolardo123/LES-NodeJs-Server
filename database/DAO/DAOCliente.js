@@ -15,7 +15,9 @@ class DAOCliente {
     }
 
     async readId(query) {
-        let resultSet = await db.execute.query("SELECT * FROM " + db.schema + ".clientes WHERE cli_id = " + query.id);
+        let resultSet = await db.execute.query("SELECT cli_pnome, cli_unome, cli_rg, cli_cpf, cli_email,"
+                                            +" cli_telefone, cli_sexo, cli_dtnascimento, cli_ddd FROM "
+                                            + db.schema + ".clientes WHERE cli_id = " + query.id);
         let DAOend = new DAOEndereco();
 
         let subquery = {};
@@ -25,8 +27,6 @@ class DAOCliente {
         resultSet[0].enderecos = enderecosSet
 
         resultSet[0].cli_dtnascimento = moment(resultSet[0].cli_dtnascimento).format('YYYY-MM-DD');
-
-        console.log(resultSet)
 
         return resultSet;
     }
@@ -80,8 +80,8 @@ class DAOCliente {
         return await db.execute.query("UPDATE " + db.schema + ".clientes "
             + "SET cli_pnome = $1, cli_unome = $2, cli_rg = $3, "
             + "cli_cpf = $4, cli_email = $5, cli_telefone = $6, "
-            + "cli_senha = $7, cli_sexo = $8, cli_dtnascimento = $9, cli_ddd = $10"
-            + "WHERE cli_id = $11",
+            + "cli_sexo = $7, cli_dtnascimento = $8, cli_ddd = $9"
+            + "WHERE cli_id = $10",
             [
                 query.cli_pnome,
                 query.cli_unome,
@@ -89,7 +89,6 @@ class DAOCliente {
                 query.cli_cpf,
                 query.cli_email,
                 query.cli_telefone,
-                query.cli_senha,
                 query.cli_sexo,
                 query.cli_dtnascimento,
                 query.cli_ddd,

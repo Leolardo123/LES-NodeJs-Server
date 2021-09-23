@@ -67,6 +67,7 @@ class Controller {
 
     async update(req,res) {
         let command = new CommandUpdate();
+        console.log(req.body)
         let result = await command.execute(req.body)
         res.json(result);
     }
