@@ -1,10 +1,12 @@
 const DAOCartao = require("../database/DAO/DAOCartao");
 const DAOCliente = require("../database/DAO/DAOCliente");
 const DAOEndereco = require("../database/DAO/DAOEndereco");
+const DAOLivro = require("../database/DAO/DAOLivro");
 
 const VerificaCartao = require("../strategy/VerificaCartao");
 const VerificaCliente = require("../strategy/VerificaCliente");
 const VerificaEndereco = require("../strategy/VerificaEndereco");
+const VerificaLivro = require("../strategy/VerificaLivro");
 
 class Fachada {
     constructor() {
@@ -17,6 +19,7 @@ class Fachada {
         this._daos.set('cliente', new DAOCliente())
         this._daos.set('cartao', new DAOCartao())
         this._daos.set('endereco', new DAOEndereco())
+        this._daos.set('livro', new DAOLivro())
     }
 
     definirRegras() {
@@ -24,6 +27,7 @@ class Fachada {
         this._regras.set('cliente', new VerificaCliente())
         this._regras.set('cartao', new VerificaCartao())
         this._regras.set('endereco', new VerificaEndereco())
+        this._regras.set('livro', new VerificaLivro())
     }
 
     async executarRegras(data) {
