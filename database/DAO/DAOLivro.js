@@ -8,7 +8,7 @@ class DAOLivro {
     }
 
     async readId (query) {
-        return await db.execute.query("SELECT * FROM "+db.schema+".livros WHERE liv_id = $1", [query.id]);
+        return await db.execute.query("SELECT * FROM "+db.schema+".livros WHERE liv_id = $1", [query.liv_id]);
     }
 
     async readOne (query) {
@@ -17,8 +17,9 @@ class DAOLivro {
 
     async insert (query) {
         try {
+            
             return await db.execute.query("INSERT INTO "
-                +db.schema+".livros(liv_valor, liv_nome, liv_autor, liv_categoria, liv_ano, liv_titulo, liv_editoria, liv_edicao,"
+                +db.schema+".livros(liv_valor, liv_nome, liv_autor, liv_categoria, liv_ano, liv_titulo, liv_editora, liv_edicao,"
                 +" liv_isbn, liv_npaginas, liv_sinopse, liv_altura, liv_peso, liv_profundidade, liv_descricao, liv_estoque, liv_custo,"
                 +" liv_mlucro, liv_preco, liv_cbarras, liv_ativo)"
                 +" VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21)", [
@@ -28,7 +29,7 @@ class DAOLivro {
                     query.liv_categoria, 
                     query.liv_ano, 
                     query.liv_titulo, 
-                    query.liv_editoria, 
+                    query.liv_editora, 
                     query.liv_edicao,
                     query.liv_isbn, 
                     query.liv_npaginas, 
@@ -45,6 +46,7 @@ class DAOLivro {
                     query.liv_ativo 
                 ]);
         }catch (err) {
+            console.log(err)
             return err;
         }
     }
