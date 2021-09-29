@@ -17,6 +17,8 @@ app.use('/livros',require('./routes/livrosRoutes'));
 // app.use('/pedidos',require('./routes/pedidosRoutes'));
 // app.use('/cupons',require('./routes/cuponsRoutes'));
 
+//CONEXAO COM API DOS CORREIOS
+app.use('/frete',require('./routes/'))
 
 app.listen(port,()=>{
     console.log("escutando requisições na porta ("+port+")..")
