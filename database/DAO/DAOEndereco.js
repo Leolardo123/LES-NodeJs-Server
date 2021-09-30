@@ -11,6 +11,10 @@ class DAOEndereco {
         return await db.execute.query("SELECT * FROM "+db.schema+".enderecos WHERE end_cli_id = $1", [query.id]);
     }
 
+    async readOne(query) {
+        return await db.execute.query("SELECT * FROM "+db.schema+".enderecos WHERE end_id = $1", [query.end_id]);
+    }
+
     async insert(query) {
         return await db.execute.query("INSERT INTO "
             +db.schema+".enderecos(end_cli_id, end_tresidencia, end_tlogradouro, end_nome, end_tipo, end_cep, end_numero, end_logradouro, end_complemento, end_bairro, end_cidade, end_estado, end_pais, end_observacao)"

@@ -3,9 +3,6 @@ const port = app.get('port');
 
 //AQUI SÃO SEPARADO AS ROTAS PRINCIPAIS
 
-//ROTA DE TESTES
-app.use('/teste',require('./routes/testeRoutes'));
-
 //A ROTA AUTH CUIDA DA AUTHENTICAÇÃO DO CLIENTE
 app.use('/auth',require('./routes/authClienteRoutes'));
 app.use('/clientes', require('./routes/clientesRoutes'));
@@ -18,7 +15,7 @@ app.use('/livros',require('./routes/livrosRoutes'));
 // app.use('/cupons',require('./routes/cuponsRoutes'));
 
 //CONEXAO COM API DOS CORREIOS
-app.use('/frete',require('./routes/'))
+app.use('/frete',require('./routes/freteRoutes'))
 
 app.listen(port,()=>{
     console.log("escutando requisições na porta ("+port+")..")

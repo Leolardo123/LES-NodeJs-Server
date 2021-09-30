@@ -12,6 +12,7 @@ const CommandUpdate = require("../command/CommandUpdate");
 const CommandUpdatePassword = require("../command/CommandUpdatePassword");
 const CommandReadAll = require('../command/CommandReadAll');
 const CommandAuth = require('../command/CommandAuth');
+const CommandCalcularFrete = require('../command/CommandCalcularFrete');
 
 class Controller {
     constructor() {}
@@ -86,6 +87,12 @@ class Controller {
 
     async delete(req,res) {
         let command = new CommandDelete();
+        let result = await command.execute(req.body)
+        res.json(result);
+    }
+
+    async calcularFrete(req,res) {
+        let command = new CommandCalcularFrete();
         let result = await command.execute(req.body)
         res.json(result);
     }

@@ -3,10 +3,13 @@ const DAOCliente = require("../database/DAO/DAOCliente");
 const DAOEndereco = require("../database/DAO/DAOEndereco");
 const DAOLivro = require("../database/DAO/DAOLivro");
 
+const Correios = require("../correios/Correios");
+
 const VerificaCartao = require("../strategy/VerificaCartao");
 const VerificaCliente = require("../strategy/VerificaCliente");
 const VerificaEndereco = require("../strategy/VerificaEndereco");
 const VerificaLivro = require("../strategy/VerificaLivro");
+const VerificaFrete = require("../strategy/VerificaFrete");
 
 class Fachada {
     constructor() {
@@ -28,6 +31,7 @@ class Fachada {
         this._regras.set('cartao', new VerificaCartao())
         this._regras.set('endereco', new VerificaEndereco())
         this._regras.set('livro', new VerificaLivro())
+        this._regras.set('frete', new VerificaFrete())
     }
 
     async executarRegras(data) {
@@ -161,6 +165,21 @@ class Fachada {
                 let dao = this._daos.get(data.type)
                 let result = await dao.delete(data);
                 return {sucMsg: 'Deletado com sucesso'};
+            } catch(e) {
+                return { errMsg: e.detail};
+            }
+        } else {
+            return { errMsg: errMsg}
+        }
+    }
+
+    async calcularFrete(data) {
+        let errMsg = await this.executarRegras(data)
+        if(errMsg == null){
+            try {
+                let correios = new Correios();
+                let result = await correios.calcularFreteAPI(data);
+                return result;
             } catch(e) {
                 return { errMsg: e.detail};
             }
